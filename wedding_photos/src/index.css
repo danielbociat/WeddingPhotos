@@ -1,0 +1,43 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #fdf2f8;
+}
+
+#root {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Button styles */
+button {
+  cursor: pointer;
+  background-color: #f9a8d4; /* pink-300 */
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 1rem;
+  font-size: 1.125rem;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background-color: #f472b6; /* pink-400 */
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #be185d; /* pink-700 */
+    background-color: #fdf2f8;
+  }
+}
