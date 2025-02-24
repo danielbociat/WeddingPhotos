@@ -6,12 +6,15 @@ const PhotoGallery = () => {
 
   const fetchPhotos = async () => {
     try {
-      const photoList = await list(); // Get all stored images
+      const photoList = await list();
       const photoUrls = await Promise.all(
-        photoList.items.map(async (photo) => ({
-          key: photo.key,
-          url: (await getUrl({ key: photo.key })).url,
-        }))
+        photoList.items.map(async (photo) => {
+          const url = (await getUrl({ key: photo.key })).url;
+          return {
+            src: url,
+            key: photo.key,
+          };
+        })
       );
       setPhotos(photoUrls);
     } catch (error) {
@@ -24,16 +27,22 @@ const PhotoGallery = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {photos.map((photo) => (
-        <div key={photo.key} className="aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-          <img 
-            src={photo.url} 
-            alt="Wedding moment" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
-          />
-        </div>
-      ))}
+    <div className="max-w-3xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        {photos.map((photo) => (
+          <div 
+            key={photo.key}
+            className="aspect-[4/3] overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+          >
+            <img 
+              src={photo.src} 
+              alt="Wedding moment" 
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
