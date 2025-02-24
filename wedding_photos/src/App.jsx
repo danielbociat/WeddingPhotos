@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-//import { Amplify } from "aws-amplify";
-//mport awsExports from "./aws-exports";
 import PhotoUpload from "./PhotoUpload";
 import PhotoGallery from "./PhotoGallery";
-
-
-//Amplify.configure(awsExports);
 
 const App = () => {
   const [refresh, setRefresh] = useState(false);
